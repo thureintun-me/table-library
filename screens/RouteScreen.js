@@ -7,6 +7,7 @@ import Playlist from './Playlist'
 import Albums from './Albums'
 import LibraryScreen from "./LibraryScreen";
 import FullAlbum from "./FullAlbum";
+import SelectSong from './SelectSong'
 const RouteScreen =()=>{
     const Stack = createNativeStackNavigator();
 
@@ -19,7 +20,7 @@ const RouteScreen =()=>{
                 <Stack.Screen name='Playlist' component={Playlist} options={{ headerShown: false }} />
                 <Stack.Screen name='Albums' component={Albums} options={{ headerShown: false }} />
                 <Stack.Screen name='FullAlbums' component={FullAlbum} options={{ headerShown: false }} />
-                
+                <Stack.Screen name='SelectSong' component={SelectSong} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     )

@@ -5,6 +5,7 @@ import RouteScreen from './screens/RouteScreen';
 import AppLoading from "expo-app-loading";
 import * as Font from 'expo-font';
 import Song from './components/Song';
+import SelectSong from './screens/SelectSong';
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -29,7 +30,7 @@ export default function App() {
   }
   return (
     <View style={styles.container}>
-      <RouteScreen />
+      <SelectSong />
       
     </View>
   );

@@ -21,6 +21,8 @@ const Playlist = () => {
   const toggleModalVisibility = () => {
     setModalVisible(!isModalVisible);
   };
+
+  const navigateToSong = ()=>navigation.navigate('SelectSong');
   return (
 
     <View style={styles.container}>
@@ -46,7 +48,7 @@ const Playlist = () => {
 
               <View style={styles.verticleLine}></View>
               <View style={{ marginLeft: 52 }}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={navigateToSong}>
                   <Text style={{ color: 'red' }}>Save</Text>
                 </TouchableOpacity>
               </View>
