@@ -8,18 +8,29 @@ import {
   TouchableOpacity,
   Modal,
   TextInput,
+  Button,
 } from "react-native";
 import Header from "../components/Header";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { color } from "react-native-reanimated";
 
 const { width } = Dimensions.get("window");
-const Playlist = () => {
+const MyScrenn = () => {
   const width = Dimensions.get("window").width;
   const navigation = useNavigation();
   const route = useRoute();
-  console.log(route.params)
-  //const {selectSong}= route.params;
 
+ 
+  const {selectSong}= route.params;
+  const [songs,setSong] = useState([]);
+  
+  const data = ()=>{
+    selectSong.map(item=>setSong(item))
+  }
+  
+  
+  
+ 
   // This is to manage Modal State
   const [isModalVisible, setModalVisible] = useState(false);
 
@@ -98,8 +109,42 @@ const Playlist = () => {
         </View>
       </View>
 
+    {
+      
+      (selectSong.length !== 0) ? (
+
         
+        <View style={styles.myPlaylistContainer}>
+        <View style={styles.mytextContainer}>
+                <View>
+                    <Text style={{color:'white',fontSize:13,width:100,fontFamily:'gotham-book'}}>My Plasylist 1</Text>
+                </View>
+                <View>
+                    <Text style={{color:'rgba(255,255,255,0.4)',fontSize:8,fontFamily:'gotham-book'}} numberOfLines={1}>{selectSong.length}songs</Text>
+                </View>
+
+            </View>
+
+            <View style={styles.iconContainer}>
+                <TouchableOpacity style={{alignSelf:'center'}} onPress={()=>navigation.navigate('MyPlaylist1')}>
+                    <Image source={require('../assets/images/library/GreaterThan.png')} style={{width:9,height:15}} />
+                
+                </TouchableOpacity>
+
+                
+            </View>
+        </View>
+      ) :(
+        <view></view>
+      )
+
      
+        
+      
+    }
+       
+      
+       
     </View>
   );
 };
@@ -122,11 +167,10 @@ const styles = StyleSheet.create({
     height: 46,
   },
   textContainer: {
-    paddingVertical: 14,
+    paddingVertical: 16,
     marginLeft: 15,
     height: 14,
     width: 93,
-    
   },
   text: {
     color: "white",
@@ -179,6 +223,28 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
   },
+  iconContainer: {
+    width: 10,
+    height: 17,
+
+},
+myPlaylistContainer:{
+    flex:1,
+    width:352,
+    height:26,
+    justifyContent:'space-between',
+    marginTop:-550,
+    flexDirection:'row',
+    marginLeft:-41,
+    
+   
+   
+},
+mytextContainer:{
+    marginLeft:50,
+    width:77,
+    height:26,
+}
 });
 
-export default Playlist;
+export default MyScrenn;

@@ -9,16 +9,16 @@ const Footer = () => {
     return (
         <View style={styles.container}>
             <View style={styles.iconContainer}>
-               <Image source={require('../assets/images/footer/Home.png')} style={{width:25,height:45}}/>
+               <Image source={require('../assets/images/footer/Home.png')} style={{width:30,height:45}}/>
                 
             </View>
             <View style={styles.iconContainer}>
-            <Image source={require('../assets/images/footer/Search.png')} style={{width:25,height:45}}/>
+            <Image source={require('../assets/images/footer/Search.png')} style={{width:30,height:45}}/>
                 
             </View>
 
             <View style={styles.iconContainer}>
-            <Image source={require('../assets/images/footer/Library.png')} style={{width:25,height:45}}/>
+            <Image source={require('../assets/images/footer/Library.png')} style={{width:30,height:45}}/>
                 
             </View>
             
