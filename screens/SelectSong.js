@@ -1,36 +1,55 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { View, Text, StyleSheet,  } from "react-native";
+import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import NayW from "../assets/images/nayw.png";
 import Song from "../components/Song";
 
 const songs = [
   {
+   
     title: "Swe Myo Par Mae",
     singer: "Nay Win",
     source: NayW,
     check: true,
   },
   {
+    
     title: "Pauk Pauk Phout",
     singer: "Nay Win",
     source: NayW,
     check: true,
   },
   {
+    
     title: "A Char Pin",
     singer: "Nay Win",
     source: NayW,
     check: true,
   },
   {
+   
     title: "Nay Kaung Nayt Myat",
     singer: "Nay Win",
     source: NayW,
     check: true,
   },
   {
+    
+    title: "A Yan Mite Tal Thamee Yay",
+    singer: "Nay Win",
+    source: NayW,
+    check: true,
+  },
+  {
+   
+    title: "Nay Kaung Nayt Myat",
+    singer: "Nay Win",
+    source: NayW,
+    check: true,
+  },
+  {
+    
     title: "A Yan Mite Tal Thamee Yay",
     singer: "Nay Win",
     source: NayW,
@@ -45,10 +64,11 @@ const SelectSong = () => {
   const [song, setSong] = useState(songs);
   const navgation = useNavigation();
   
-  const checkAll = () => {
-    let newValue = song.filter((item) => item.check).length === song.length;
+  
+  const checkAll = (value) => {
+   
     let temp = song.map((item) => {
-      return { ...item, check: !newValue };
+      return { ...item, check: value };
     });
     setSong(temp);
     SetOn(!on);
@@ -58,6 +78,7 @@ const SelectSong = () => {
       return index === i ? { ...item, check: newValue } : item;
     });
     setSong(temp);
+    
   };
 
   return (
@@ -67,11 +88,11 @@ const SelectSong = () => {
      
       <View style={styles.headerContainer}>
         {on ? (
-          <TouchableOpacity onPress={checkAll}>
+          <TouchableOpacity onPress={()=>checkAll(false)}>
             <Text style={styles.headerText}>Select All</Text>
           </TouchableOpacity>
         ) : (
-          <TouchableOpacity onPress={checkAll}>
+          <TouchableOpacity onPress={()=>checkAll(true)}>
             <Text style={styles.headerText}>Deselect All</Text>
           </TouchableOpacity>
         )}
@@ -82,46 +103,47 @@ const SelectSong = () => {
         </TouchableOpacity>
      
       </View>
-      <ScrollView style={styles.albumContainer}>
-        {song.map((item, i) => {
-          return (
+     
+
+      <FlatList style={styles.albumContainer} data={song} keyExtractor={()=>Math.random().toString()} renderItem={({item,index})=>{
+          return(
             <View
-              style={{
-                
-                flex:1,
-                flexDirection: "row",
-                alignItems: "center",
-                marginHorizontal: 11,
-              }}
-              key={i}
-            >
-              {item.check ? (
-                <TouchableOpacity
-                  style={{ alignSelf: "center" }}
-                  onPress={() => checkOne(!item.check, i)}
-                >
-                  <View style={styles.whitecircle} />
-                </TouchableOpacity>
-              ) : (
-                <TouchableOpacity
-                  style={{ alignSelf: "center" }}
-                  onPress={() => checkOne(!item.check, i)}
-                >
-                  <View style={styles.redCircle} />
-                </TouchableOpacity>
-              )}
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginLeft: 15,
+            }}
+          >
+            {item.check ? (
+              <TouchableOpacity
+                style={{ alignSelf: "center" }}
+                onPress={() => checkOne(!item.check,index)}
+              >
+                <View style={styles.whitecircle} />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                style={{ alignSelf: "center" }}
+                onPress={() => checkOne(!item.check,index)}
+              >
+                <View style={styles.redCircle} />
+              </TouchableOpacity>
+            )}
 
-              <Song
-                
-                title={item.title}
-                singer={item.singer}
-                source={item.source}
-              />
-            </View>
-          );
-        })}
-      </ScrollView>
+              
+            <Song
+              
+              title={item.title}
+              singer={item.singer}
+              source={item.source}
+            />
+          </View>
+          )
+        }}>
 
+        </FlatList>
+          
+     
       {song.filter((item) => item.check === false).length > 0 ? (
         <View
           style={{

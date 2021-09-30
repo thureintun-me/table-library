@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import Song from '../components/Song';
 import NayW from '../assets/images/nayw.png'
 import Footer from '../components/Footer';
+import { FlatList } from 'react-native-gesture-handler';
 
 
 
@@ -149,17 +150,19 @@ const Purchase = (props) => {
     return (
         <View style={styles.container}>
             <Header title='Purchased Tracks' onPress={() => navgation.navigate('Library')}></Header>
-            <ScrollView style={styles.albumContainer}>
-                {
-                    
-                    songs.map((item,i)=>{
-                        
-                        return(
-                            <Song key={i} title={item.title} singer={item.singer} source={item.source} />
-                        )
-                    })
-                }
-            </ScrollView>
+            
+
+            <FlatList 
+                style={styles.albumContainer}
+                keyExtractor={()=>Math.random().toString()}
+                data={songs}
+                renderItem={({item})=>{
+                    return(
+
+                        <Song  title={item.title} singer={item.singer} source={item.source} />
+                    )
+                }}
+            />
 
             <Footer/>
 

@@ -14,7 +14,7 @@ const LibraryScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Your Library</Text>
+        <Text numberOfLines={1} style={styles.title}>Your Library</Text>
       </View>
       < View style={styles.menuItemContainer}>
        
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
   },
   titleContainer: {
-    width: 157,
+    
     height: 27,
     marginTop: 53,
     marginLeft: 13,

@@ -176,16 +176,18 @@ const styles = StyleSheet.create({
     marginLeft: 11,
     marginTop: 52,
   },
-  imageContainer: {},
+  imageContainer: {
+   alignSelf:"center"
+  },
   image: {
     width: 46,
     height: 46,
   },
   textContainer: {
-    paddingVertical: 14,
+    alignSelf:"center",
     marginLeft: 15,
     height: 14,
-    width: 93,
+    
   },
   text: {
     color: "white",

@@ -1,4 +1,4 @@
-import { View, StyleSheet, ScrollView,Text,Image } from "react-native";
+import { View, StyleSheet, ScrollView,FlatList } from "react-native";
 import React from "react";
 import Header from "../components/Header";
 import { useNavigation } from '@react-navigation/native';
@@ -42,21 +42,23 @@ const MyPlaylist1 = () => {
     return (
         <View style={styles.container}>
             <Header title='My Playlist 1' onPress={() => navgation.navigate('Library')} />
-            <ScrollView style={styles.albumContainer}>
+           
                 
             
-                    {
-                    
-                        songs.map((item,i)=>{
-                        
-                            return(
-                                <Song key={i} title={item.title} singer={item.singer} source={item.source} />
-                            )
-                        })
-                    }
+            <FlatList 
+                style={styles.albumContainer}
+                keyExtractor={()=>Math.random().toString()}
+                data={songs}
+                renderItem={({item})=>{
+                    return(
+
+                        <Song  title={item.title} singer={item.singer} source={item.source} />
+                    )
+                }}
+            />
                
                 
-            </ScrollView>
+           
             <Footer />
         </View>
     )

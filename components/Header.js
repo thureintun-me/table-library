@@ -36,7 +36,7 @@ const styles = StyleSheet.create(
         },
         headerTextContainer:{
             
-            width:140,
+           
             height:14,
             marginLeft:35,
             

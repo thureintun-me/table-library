@@ -1,5 +1,5 @@
 import React from "react";
-import {View,Text, Image, StyleSheet, ScrollView} from 'react-native'
+import {View, StyleSheet, FlatList} from 'react-native'
 import AlbumSong from "../components/AlbumSong";
 import FullAlbumHeader from "../components/FullAlbumHeader";
 import Header from "../components/Header";
@@ -11,12 +11,14 @@ import Footer from "../components/Footer";
 const FullAlbum = ()=>{
     const songs =[
         {
+            
             title:'Swe Myo Par Mae',
             singer:'Nay Win',
             source:NayW
-    
+
         },
         {
+
             title:'Pauk Pauk Phout',
             singer:'Nay Win',
             source:NayW
@@ -81,7 +83,6 @@ const FullAlbum = ()=>{
             singer:'Nay Win',
             source:NayW
         },
-        ,
         {
             title:'Yan Than',
             singer:'Nay Win',
@@ -102,7 +103,21 @@ const FullAlbum = ()=>{
             singer:'Nay Win',
             source:NayW
         },
-        ,
+        {
+            title:'Yan Than',
+            singer:'Nay Win',
+            source:NayW
+        },
+        {
+            title:'Than Eain Mat',
+            singer:'Nay Win',
+            source:NayW
+        },
+        {
+            title:'Radio',
+            singer:'Nay Win',
+            source:NayW
+        },
         {
             title:'Yan Than',
             singer:'Nay Win',
@@ -128,16 +143,17 @@ const FullAlbum = ()=>{
         <View style={styles.container}>
             <FullAlbumHeader />
             
-                  <ScrollView style={styles.songContainer}>
-                      {
-                          songs.map((item,i)=>{
-                              return(
-                                <AlbumSong key={i} title={item.title} singer={item.singer} />
-                              )
-                              
-                          })
-                      }
-                  </ScrollView>
+            <FlatList 
+                style={styles.songContainer}
+                keyExtractor={()=>Math.random().toString()}
+                data={songs}
+                renderItem={({item})=>{
+                    return(
+
+                        <Song  title={item.title} singer={item.singer} source={item.source} />
+                    )
+                }}
+            />
             
 
             <Footer />
