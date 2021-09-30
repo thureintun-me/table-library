@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import { useNavigation } from '@react-navigation/native';
 import Footer from "../components/Footer";
 import AlbumContainer from "../components/AlbumContainer";
+import { ScrollView } from "react-native-gesture-handler";
 
 
 const Albums=()=>{
@@ -11,10 +12,15 @@ const Albums=()=>{
     return(
         <View style={styles.container}>
             <Header title='Purchased Albums' onPress={()=>navigation.navigate('Library')}/>
-           <View style={styles.albumsContainer}>
+           <ScrollView style={styles.albumsContainer}>
                 <AlbumContainer title="Album" singer="Artist"/>
-                <AlbumContainer title="Album" singer="Artist"/>  
-           </View>
+                <AlbumContainer title="Album" singer="Artist"/>
+                <AlbumContainer title="Album" singer="Artist"/>
+                <AlbumContainer title="Album" singer="Artist"/>
+                <AlbumContainer title="Album" singer="Artist"/>
+                <AlbumContainer title="Album" singer="Artist"/>
+                
+           </ScrollView>
            
 
 
@@ -27,11 +33,14 @@ const styles= StyleSheet.create(
         container:{
             flex:1,
             backgroundColor:'black'
+
             
         },
         albumsContainer:{
             
             marginTop:53,
+            
+            
            
            
 

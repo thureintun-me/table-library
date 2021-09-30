@@ -18,15 +18,22 @@ const AlbumContainer = (props) => {
 
             </View>
             <View style={styles.imageContainer}>
-                <Image source={require('../assets/images/HappyForU.jpeg')} style={{ width: 115, height: 115 }}></Image>
+                <TouchableOpacity onPress={()=>navigation.navigate('FullAlbums')}>
+                <Image source={require('../assets/images/Nay.jpg')} style={{ width: 115, height: 115 }}></Image>
+                </TouchableOpacity>
                 <Text style={styles.album}>{props.title}</Text>
                 <Text style={styles.singer}>{props.singer}</Text>
+
             </View>
             <View style={styles.imageContainer}>
-                <Image source={require('../assets/images/OhMyTT.jpeg')} style={{ width: 115, height: 115 }}></Image>
+                <TouchableOpacity onPress={()=>navigation.navigate('FullAlbums')}>
+                <Image source={require('../assets/images/Nay.jpg')} style={{ width: 115, height: 115 }}></Image>
+                </TouchableOpacity>
                 <Text style={styles.album}>{props.title}</Text>
                 <Text style={styles.singer}>{props.singer}</Text>
+
             </View>
+            
         </View>
        
     )
@@ -37,6 +44,7 @@ const styles = StyleSheet.create(
     {
        
         albumsContainer:{
+           
             marginTop:22,
             flexDirection:'row',
             marginLeft:11,
