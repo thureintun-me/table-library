@@ -17,8 +17,11 @@ const Playlist = () => {
   const width = Dimensions.get("window").width;
   const navigation = useNavigation();
   const route = useRoute();
-  console.log(route.params)
-  //const {selectSong}= route.params;
+  const [selectSong, setSelectSong] = useState();
+
+  if (route.params !== undefined) {
+    var { selectedSong } = route.params;
+  }
 
   // This is to manage Modal State
   const [isModalVisible, setModalVisible] = useState(false);
@@ -31,8 +34,13 @@ const Playlist = () => {
   const toggleModalVisibility = () => {
     setModalVisible(!isModalVisible);
   };
+ 
 
-  const navigateToSong = () => navigation.navigate("SelectSong");
+  const navigateToSong = () => {
+    navigation.navigate("SelectSong");
+    toggleModalVisibility();
+
+  }
   return (
     <View style={styles.container}>
       <Modal
@@ -44,7 +52,14 @@ const Playlist = () => {
       >
         <View style={styles.viewWrapper}>
           <View style={styles.modalView}>
-            <Text style={{ color: "white", marginBottom: 27, fontSize: 13 }}>
+            <Text
+              style={{
+                color: "white",
+                marginBottom: 27,
+                fontSize: 13,
+                fontFamily: "gotham-book",
+              }}
+            >
               Create Playlist
             </Text>
             <TextInput
@@ -60,14 +75,30 @@ const Playlist = () => {
             <View style={styles.myButtonContainer}>
               <View style={{ marginRight: 52 }}>
                 <TouchableOpacity onPress={toggleModalVisibility}>
-                  <Text style={{ color: "white" }}>Cancel</Text>
+                  <Text
+                    style={{
+                      color: "white",
+                      fontFamily: "gotham-book",
+                      fontSize: 13,
+                    }}
+                  >
+                    Cancel
+                  </Text>
                 </TouchableOpacity>
               </View>
 
               <View style={styles.verticleLine}></View>
               <View style={{ marginLeft: 52 }}>
                 <TouchableOpacity onPress={navigateToSong}>
-                  <Text style={{ color: "red" }}>Save</Text>
+                  <Text
+                    style={{
+                      color: "red",
+                      fontFamily: "gotham-book",
+                      fontSize: 13,
+                    }}
+                  >
+                    Save
+                  </Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -93,13 +124,43 @@ const Playlist = () => {
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.text}>Create Playlist</Text>
-
-          
         </View>
       </View>
 
-        
-     
+      {route.params !== undefined ? (
+        <View style={styles.myPlaylistContainer}>
+          <View style={{ flexDirection: "column" }}>
+            <Text style={{color:'white',fontSize:13,width:100,fontFamily:'gotham-book'}}>My Playlist 1</Text>
+            <Text
+              style={{
+                color: "rgba(255,255,255,0.4)",
+                fontSize: 8,
+                fontFamily: "gotham-book",
+              }}
+              numberOfLines={1}
+            >
+              {selectedSong.length} songs
+            </Text>
+          </View>
+          <View>
+            <TouchableOpacity
+              style={{
+                alignSelf: "center",
+                paddingVertical: 6,
+                marginLeft: 150,
+              }}
+              onPress={() => navigation.navigate("MyPlaylist1")}
+            >
+              <Image
+                source={require("../assets/images/library/GreaterThan.png")}
+                style={{ width: 9, height: 15,marginRight:14,  }}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+      ) : (
+        <View></View>
+      )}
     </View>
   );
 };
@@ -109,7 +170,6 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
   },
   createPlaylistContainer: {
-    flex: 1,
     flexDirection: "row",
     width: 154,
     height: 46,
@@ -126,10 +186,11 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     height: 14,
     width: 93,
-    
   },
   text: {
     color: "white",
+    fontFamily: "gotham-book",
+    fontSize: 13,
   },
   screen: {
     flex: 1,
@@ -160,24 +221,30 @@ const styles = StyleSheet.create({
   },
   textInput: {
     width: "90%",
-    borderRadius: 5,
+    height: 36,
     paddingVertical: 8,
     paddingHorizontal: 16,
-    borderColor: "white",
+    borderColor: "#707070",
     borderWidth: 1,
     marginBottom: 8,
     color: "#fff",
     fontSize: 13,
   },
   verticleLine: {
-    height: "100%",
+    height: 20,
     width: 1,
-    backgroundColor: "#909090",
+    backgroundColor: "#FFFFFF",
   },
   myButtonContainer: {
     marginTop: 32,
     flexDirection: "row",
     justifyContent: "space-around",
+  },
+  myPlaylistContainer: {
+    marginTop: 20,
+    marginLeft: 11,
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 });
 

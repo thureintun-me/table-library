@@ -1,14 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import MenuItem from "../components/MenuItem";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { setStatusBarBackgroundColor } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
-import Tracks from "../assets/images/library/Track.png";
-import Albums from "../assets/images/library/Albums.png";
-import Favourite from "../assets/images/library/Favourite.png";
-import Playlist from "../assets/images/library/Playlist.png";
+import Tracks from "../assets/images/library/UTrack.png";
+import Albums from "../assets/images/library/UAlbum.png";
+import Favourite from "../assets/images/library/UFav.png";
+import Playlist from "../assets/images/library/UPlaylist.png";
+import Footer from "../components/Footer";
 
 const LibraryScreen = () => {
   const navgation = useNavigation();
@@ -24,13 +22,13 @@ const LibraryScreen = () => {
             title="Purchased Tracks"
             onPress={() => navgation.navigate("Purchase")}
             source={Tracks}
-            style={{width:22,height:13,marginLeft:11}}
+            style={{width:22,height:19,marginLeft:11}}
           />
        
           <MenuItem
             title="Purchased Albums"
             onPress={() => navgation.navigate("Albums")}
-            source={Favourite} style={{width:20,height:16,marginBottom:15,marginLeft:14}}
+            source={Albums} style={{width:19,height:16,marginBottom:15,marginLeft:14}}
           />
        
 
@@ -38,18 +36,20 @@ const LibraryScreen = () => {
           <MenuItem
             title="Favourite"
             onPress={() => navgation.navigate("Favourite")}
-            source={Playlist} 
+            source={Favourite} 
             style={{width:20,height:21,marginLeft:14}}
           />
        
           <MenuItem
             title="Playlists"
             onPress={() => navgation.navigate("Playlist")}
-            source={Albums}
-            style={{width:22,height:17,marginLeft:13}}
+            source={Playlist}
+            style={{width:23,height:17,marginLeft:14}}
           />
        
       </View>
+
+      <Footer />
     </View>
   );
 };

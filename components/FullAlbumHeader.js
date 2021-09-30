@@ -39,9 +39,9 @@ const styles = StyleSheet.create(
             color:'white'
         },
         singer:{
-            marginTop:20,
+            marginTop:13,
             fontSize:13,
-            fontFamily:'gotham-medium',
+            fontFamily:'gotham-book',
             color:'white'
         }
 

@@ -4,20 +4,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import RouteScreen from './screens/RouteScreen';
 import AppLoading from "expo-app-loading";
 import * as Font from 'expo-font';
-import Song from './components/Song';
-import SelectSong from './screens/SelectSong';
-import LibraryScreen from './screens/LibraryScreen';
-import MySelectSong from './screens/SelectSong';
-import TestScreen from './screens/TestScreen';
-import MyScrenn from './screens/MyScrenn';
-import Item from './screens/Item';
 
 
 const fetchFonts = () => {
   return Font.loadAsync({
     "gotham-bold": require("./assets/fonts/Gotham-Bold.otf"),
     "gotham-book": require("./assets/fonts/GothamBook.ttf"),
-    "gotham-medium" : require('./assets/fonts/GothamMedium.ttf')
+    "gotham-medium" : require('./assets/fonts/GothamMedium.ttf'),
+    "gotham-light":require('./assets/fonts/Gotham-Font/GothamLight.ttf')
   });
 };
 

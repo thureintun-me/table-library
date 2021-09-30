@@ -22,7 +22,7 @@ const MenuItem = (props) => {
         </View>
           
        
-        <View style={{ width: 140 }}>
+        <View style={{ width: 140,marginBottom:50 }}>
           <Text style={styles.text} numberOfLines={1}>
             {props.title}
           </Text>
@@ -30,7 +30,7 @@ const MenuItem = (props) => {
       </View>
 
       <View style={styles.iconContainer}>
-        <TouchableOpacity onPress={props.onPress}>
+      <TouchableOpacity onPress={props.onPress}>
           <Image
             source={require("../assets/images/library/GreaterThan.png")}
             style={{ width: 9, height: 15 }}
@@ -44,29 +44,31 @@ const MenuItem = (props) => {
 const styles = StyleSheet.create({
   container: {
     
-    height: 17.5,
-    marginLeft: 13,
+    height: 19.5,
+    width:353,
+    marginLeft: 11,
     flexDirection: "row",
     justifyContent: "space-between",
     marginRight: 15.03,
-    marginBottom:10,
+    marginBottom:15,
     
    
   },
   textContainer: {
    
     flexDirection: "row",
-    width: 105,
-    height: 13,
+   
    
    
   },
   text: {
+    
     marginLeft: 16,
-    color: "rgba(255,255,255,255)",
+    color: "#FFFFFF",
     fontSize: 12,
-    fontFamily: "gotham-medium",
-    marginBottom:80,
+    fontFamily: "gotham-light",
+    paddingVertical:2
+    
   },
   iconContainer: {
     width: 10,

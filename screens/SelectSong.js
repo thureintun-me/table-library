@@ -40,11 +40,11 @@ const songs = [
 
 ];
 
-const MySelectSong = () => {
+const SelectSong = () => {
   const [on, SetOn] = useState(true);
   const [song, setSong] = useState(songs);
   const navgation = useNavigation();
-
+  
   const checkAll = () => {
     let newValue = song.filter((item) => item.check).length === song.length;
     let temp = song.map((item) => {
@@ -76,7 +76,7 @@ const MySelectSong = () => {
           </TouchableOpacity>
         )}
 
-        <Text style={(styles.headerText, { color: "white" })}>Songs</Text>
+        <Text style={(styles.headerText, { color: "white",fontFamily:'gotham-bold' })}>Songs</Text>
         <TouchableOpacity>
           <Text style={styles.headerText} onPress={()=>navgation.navigate('Playlist')}>Cancel</Text>
         </TouchableOpacity>
@@ -126,7 +126,7 @@ const MySelectSong = () => {
         <View
           style={{
            
-            width:390,
+            width:353,
             maxHeight: 24,
             borderWidth: 0.8,
             marginTop: 45,
@@ -138,12 +138,12 @@ const MySelectSong = () => {
         >
           <TouchableOpacity
             onPress={() =>
-              navgation.navigate("MyScreen", {
-                selectSong: song.filter((item) => item.check === false),
+              navgation.navigate("Playlist", {
+                selectedSong: song.filter((item) => item.check === false),
               })
             }
           >
-            <Text style={{ color: "white", textAlign: "center" ,paddingVertical:1}}>
+            <Text style={{ color: "#707070",fontSize:13,height:24,fontFamily:'gotham-book', textAlign: "center" ,paddingVertical:3}}>
               Add {"("} {song.filter((item) => item.check === false).length}{" "}
               {")"}
             </Text>
@@ -205,4 +205,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MySelectSong;
+export default SelectSong;
